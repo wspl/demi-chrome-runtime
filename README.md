@@ -18,7 +18,8 @@ and [Chrome runtime](https://github.com/wspl/demi/blob/feat/demi-next/docs/deliv
 | `libs-x86_64.tar.zst`, `libs-aarch64.tar.zst` | `lib/`: the shared objects Chrome needs beyond glibc and `libgcc_s`, from AlmaLinux 8 |
 | `fonts.tar.zst` | `fonts/`: the Noto family and Liberation; `fontconfig/fonts.conf` |
 | `licenses.tar.zst` | Each package's license texts, and a `MANIFEST` naming every file with its package and version |
-| `sources/` | The source packages of every library and font in the release |
+| `sources.tar` | The source packages of every library and font in the release |
+| `SHA256SUMS` | The digest of every other asset |
 
 Releases are numbered `1`, `2`, …, and change only when a Chrome version
 needs a library the runtime lacks, or a package gets a fix.
