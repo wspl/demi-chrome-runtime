@@ -1,0 +1,7 @@
+{
+  "manifest_version": 3,
+  "name": "chrome-deps probe",
+  "version": "1",
+  "permissions": ["offscreen", "tabCapture"],
+  "background": { "service_worker": "background.js", "type": "module" }
+}

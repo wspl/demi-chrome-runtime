@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Chrome runtime check</title>
+<style>
+  body { margin: 16px; font-family: sans-serif; font-size: 22px; line-height: 1.4; background: #fff; color: #111; width: 1100px; }
+  .row { display: flex; gap: 12px; align-items: baseline; border-bottom: 1px solid #eee; }
+  .label { flex: 0 0 300px; color: #777; font: 12px monospace; }
+  #status { font: 13px monospace; white-space: pre-wrap; color: #333; margin-top: 12px; }
+  video { width: 160px; height: 90px; border: 1px solid #ccc; }
+</style>
+</head>
+<body>
+<div id="rows"></div>
+<video id="video" muted playsinline></video>
+<div id="status">media: running…</div>
+<script>
+// Font checks. The probe passes fonts.json's checks to show(); inspect()
+// draws each of a row's characters on a canvas with the row's font and
+// compares it with a character no font has, which is drawn as .notdef.
+window.show = checks => {
+  const rows = document.getElementById('rows');
+  checks.forEach((check, index) => {
+    const row = document.createElement('div');
+    row.className = 'row';
+    const label = document.createElement('span');
+    label.className = 'label';
+    label.textContent = `${check.expect.join(' | ')}${check.lang ? ' [' + check.lang + ']' : ''}`;
+    const sample = document.createElement('span');
+    sample.id = `check-${index}`;
+    sample.textContent = check.sample;
+    if (check.lang) {
+      sample.lang = check.lang;
+    }
+    sample.style.fontFamily = check.css ?? 'sans-serif';
+    row.append(label, sample);
+    rows.append(row);
+  });
+  return document.fonts.ready.then(() => checks.length);
+};
+
+window.inspect = (index, chars) => {
+  const element = document.getElementById(`check-${index}`);
+  const pattern = new RegExp(`^(?:${chars})$`, 'u');
+  const letters = [...new Set([...element.textContent])]
+    .filter(c => pattern.test(c) && /[\p{L}\p{N}\p{S}]/u.test(c));
+  const canvas = document.createElement('canvas');
+  canvas.width = 96;
+  canvas.height = 96;
+  const context = canvas.getContext('2d', { willReadFrequently: true });
+  context.font = `48px ${getComputedStyle(element).fontFamily}`;
+  if ('lang' in context && element.lang) {
+    context.lang = element.lang;
+  }
+  const draw = text => {
+    context.clearRect(0, 0, 96, 96);
+    context.fillStyle = '#000';
+    context.fillText(text, 16, 64);
+    return context.getImageData(0, 0, 96, 96).data;
+  };
+  const same = (a, b) => a.every((value, i) => value === b[i]);
+  // U+0378 is unassigned, so no font has it.
+  const notdef = draw('͸');
+  const result = { letters: letters.length, notdef: [], blank: [], colored: 0 };
+  for (const letter of letters) {
+    const pixels = draw(letter);
+    let ink = 0;
+    let colored = false;
+    for (let i = 0; i < pixels.length; i += 4) {
+      if (pixels[i + 3] > 0) {
+        ink++;
+      }
+      const [r, g, b] = [pixels[i], pixels[i + 1], pixels[i + 2]];
+      if (pixels[i + 3] > 128 && Math.max(r, g, b) - Math.min(r, g, b) > 64) {
+        colored = true;
+      }
+    }
+    if (ink === 0) {
+      result.blank.push(letter);
+    } else if (same(pixels, notdef)) {
+      result.notdef.push(letter);
+    }
+    if (colored) {
+      result.colored++;
+    }
+  }
+  return result;
+};
+
+// Media: WebCodecs H.264 encoding as Demi's live view configures it, audio
+// playback, and a recorded WebM played back.
+function log(line) {
+  document.getElementById('status').textContent += '\n' + line;
+}
+
+async function webcodecs() {
+  const config = {
+    codec: 'avc1.640033', width: 1280, height: 720, framerate: 30, bitrate: 4_000_000,
+    bitrateMode: 'variable', latencyMode: 'realtime', hardwareAcceleration: 'prefer-software',
+    avc: { format: 'annexb' },
+  };
+  const support = await VideoEncoder.isConfigSupported(config);
+  const chunks = [];
+  let failure = null;
+  if (support.supported) {
+    const encoder = new VideoEncoder({
+      output: chunk => chunks.push({ type: chunk.type, size: chunk.byteLength }),
+      error: e => { failure = String(e); },
+    });
+    encoder.configure(config);
+    const canvas = new OffscreenCanvas(1280, 720);
+    const context = canvas.getContext('2d');
+    for (let i = 0; i < 10; i++) {
+      context.fillStyle = `hsl(${i * 36}, 80%, 50%)`;
+      context.fillRect(0, 0, 1280, 720);
+      context.fillStyle = '#000';
+      context.font = '64px sans-serif';
+      context.fillText('frame ' + i, 100, 300);
+      const frame = new VideoFrame(canvas, { timestamp: i * 33_333 });
+      encoder.encode(frame, { keyFrame: i === 0 });
+      frame.close();
+    }
+    await encoder.flush();
+    encoder.close();
+  }
+  return {
+    encodeSupported: support.supported,
+    chunks: chunks.length,
+    key: chunks.filter(c => c.type === 'key').length,
+    bytes: chunks.reduce((s, c) => s + c.size, 0),
+    failure,
+  };
+}
+
+function wav() {
+  const rate = 8000;
+  const samples = rate * 2;
+  const buffer = new ArrayBuffer(44 + samples * 2);
+  const view = new DataView(buffer);
+  const text = (offset, s) => { for (let i = 0; i < s.length; i++) view.setUint8(offset + i, s.charCodeAt(i)); };
+  text(0, 'RIFF'); view.setUint32(4, 36 + samples * 2, true); text(8, 'WAVE'); text(12, 'fmt ');
+  view.setUint32(16, 16, true); view.setUint16(20, 1, true); view.setUint16(22, 1, true);
+  view.setUint32(24, rate, true); view.setUint32(28, rate * 2, true); view.setUint16(32, 2, true); view.setUint16(34, 16, true);
+  text(36, 'data'); view.setUint32(40, samples * 2, true);
+  for (let i = 0; i < samples; i++) view.setInt16(44 + i * 2, Math.sin(i / rate * 440 * 2 * Math.PI) * 8000, true);
+  return new Blob([buffer], { type: 'audio/wav' });
+}
+
+async function audio() {
+  const element = new Audio(URL.createObjectURL(wav()));
+  await element.play();
+  await new Promise(resolve => setTimeout(resolve, 700));
+  return { currentTime: Number(element.currentTime.toFixed(2)), paused: element.paused };
+}
+
+async function video() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 320;
+  canvas.height = 180;
+  const context = canvas.getContext('2d');
+  const recorder = new MediaRecorder(canvas.captureStream(30), { mimeType: 'video/webm;codecs=vp8' });
+  const parts = [];
+  recorder.ondataavailable = event => parts.push(event.data);
+  const stopped = new Promise(resolve => { recorder.onstop = resolve; });
+  recorder.start(100);
+  let i = 0;
+  const timer = setInterval(() => { context.fillStyle = `hsl(${i++ * 20}, 80%, 50%)`; context.fillRect(0, 0, 320, 180); }, 33);
+  await new Promise(resolve => setTimeout(resolve, 1200));
+  recorder.stop();
+  clearInterval(timer);
+  await stopped;
+  const element = document.getElementById('video');
+  element.src = URL.createObjectURL(new Blob(parts, { type: 'video/webm' }));
+  await element.play();
+  await new Promise(resolve => setTimeout(resolve, 600));
+  return { webmBytes: parts.reduce((s, p) => s + p.size, 0), videoWidth: element.videoWidth, currentTime: Number(element.currentTime.toFixed(2)) };
+}
+
+async function step(name, work) {
+  const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error('timed out after 15 s')), 15000));
+  try {
+    const result = await Promise.race([work(), timeout]);
+    log(name + ': ' + JSON.stringify(result));
+    return result;
+  } catch (error) {
+    log(name + ': ERROR ' + error);
+    return { error: String(error) };
+  }
+}
+
+window.media = (async () => {
+  const results = {
+    webcodecs: await step('webcodecs', webcodecs),
+    audio: await step('audio', audio),
+    video: await step('video', video),
+  };
+  const status = document.getElementById('status');
+  status.textContent = status.textContent.replace('media: running…', 'media: done');
+  return results;
+})();
+</script>
+</body>
+</html>
