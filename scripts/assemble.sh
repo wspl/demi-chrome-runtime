@@ -1,7 +1,8 @@
 #!/bin/bash
 # Assembles a release's assets from the build jobs' outputs: the libraries'
 # and fonts' archives, licenses.tar.zst with every package's license texts
-# and the MANIFEST, every source archive, and SHA256SUMS.
+# and the MANIFEST, sources.tar with every source archive under sources/, and
+# SHA256SUMS.
 #
 # Usage: assemble.sh <artifacts dir> <assets dir>
 #   <artifacts dir> holds libs-x86_64/, libs-aarch64/ and fonts/, each with its
@@ -38,15 +39,18 @@ done
 rm -rf "$out.licenses"
 
 # Source archives, once each; a name both architectures carry is the same file.
+mkdir -p "$out.sources/sources"
 for part in "${parts[@]}"; do
   for file in "$in/$part/sources"/*; do
     name=$(basename "$file")
-    if [[ -f "$out/$name" ]]; then
-      cmp "$file" "$out/$name"
+    if [[ -f "$out.sources/sources/$name" ]]; then
+      cmp "$file" "$out.sources/sources/$name"
     else
-      cp "$file" "$out/"
+      cp "$file" "$out.sources/sources/"
     fi
   done
 done
+"$(dirname "$0")/pack.sh" "$out.sources" "$out/sources.tar" sources
+rm -rf "$out.sources"
 
 (cd "$out" && sha256sum -- * > SHA256SUMS)
