@@ -39,7 +39,7 @@ jobs:
             runner: ubuntu-24.04-arm
     runs-on: ${{ matrix.runner }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Download Chrome
         run: echo "CHROME_DIR=$(scripts/chrome.sh "$CHROME" ${{ matrix.arch }} "$RUNNER_TEMP/chrome")" >> "$GITHUB_ENV"
       - name: Collect the libraries
@@ -52,12 +52,12 @@ jobs:
         run: |
           scripts/pack.sh out out/libs-${{ matrix.arch }}.tar.zst lib
           ls -l out/libs-${{ matrix.arch }}.tar.zst
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: libs-${{ matrix.arch }}
           path: out/libs-${{ matrix.arch }}.tar.zst
           compression-level: 0
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: libs-${{ matrix.arch }}-notices
           path: |
@@ -70,19 +70,19 @@ jobs:
     name: Fonts
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Build the fonts
         run: python3 fonts/build.py --out out --cache "$RUNNER_TEMP/fonts" --version "$RELEASE"
       - name: Pack
         run: |
           scripts/pack.sh out out/fonts.tar.zst fonts fontconfig
           ls -l out/fonts.tar.zst
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: fonts
           path: out/fonts.tar.zst
           compression-level: 0
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: fonts-notices
           path: |
@@ -108,12 +108,12 @@ jobs:
             bun: bun-linux-arm64
     runs-on: ${{ matrix.runner }}
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/download-artifact@v4
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
         with:
           name: libs-${{ matrix.arch }}
           path: dist
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: fonts
           path: dist
@@ -135,7 +135,7 @@ jobs:
       - name: Name the results
         if: always()
         run: echo "RESULTS=test-${{ matrix.arch }}-$(echo '${{ matrix.image }}' | tr ':.' '--')" >> "$GITHUB_ENV"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: ${{ env.RESULTS }}
@@ -149,8 +149,8 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/download-artifact@v4
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
         with:
           path: artifacts
       - name: Assemble the assets
