@@ -1,0 +1,2105 @@
+{
+  "fonts": [
+    {
+      "name": "Liberation Fonts",
+      "version": "2.1.5",
+      "url": "https://github.com/liberationfonts/liberation-fonts/files/7261482/liberation-fonts-ttf-2.1.5.tar.gz",
+      "size": 2385008,
+      "sha256": "7191c669bf38899f73a2094ed00f7b800553364f90e2637010a69c0e268f25d0",
+      "license": "liberation-fonts-ttf-2.1.5/LICENSE",
+      "source": {
+        "url": "https://github.com/liberationfonts/liberation-fonts/files/7261483/liberation-fonts-2.1.5.tar.gz",
+        "size": 5084561,
+        "sha256": "fb22c2109dcbb25202aeb6202c0a58fd2e536dbf7c72879c4bbfa2b8a9a75d60"
+      },
+      "files": [
+        "liberation-fonts-ttf-2.1.5/LiberationSans-Regular.ttf",
+        "liberation-fonts-ttf-2.1.5/LiberationSans-Bold.ttf",
+        "liberation-fonts-ttf-2.1.5/LiberationSans-Italic.ttf",
+        "liberation-fonts-ttf-2.1.5/LiberationSans-BoldItalic.ttf",
+        "liberation-fonts-ttf-2.1.5/LiberationSerif-Regular.ttf",
+        "liberation-fonts-ttf-2.1.5/LiberationSerif-Bold.ttf",
+        "liberation-fonts-ttf-2.1.5/LiberationSerif-Italic.ttf",
+        "liberation-fonts-ttf-2.1.5/LiberationSerif-BoldItalic.ttf",
+        "liberation-fonts-ttf-2.1.5/LiberationMono-Regular.ttf",
+        "liberation-fonts-ttf-2.1.5/LiberationMono-Bold.ttf",
+        "liberation-fonts-ttf-2.1.5/LiberationMono-Italic.ttf",
+        "liberation-fonts-ttf-2.1.5/LiberationMono-BoldItalic.ttf"
+      ],
+      "families": [
+        {
+          "name": "Liberation Sans",
+          "langs": [],
+          "generic": false
+        },
+        {
+          "name": "Liberation Serif",
+          "langs": [],
+          "generic": false
+        },
+        {
+          "name": "Liberation Mono",
+          "langs": [],
+          "generic": false
+        }
+      ],
+      "checks": [
+        {
+          "css": "Arial, Helvetica",
+          "sample": "Arial: The quick brown fox jumps over the lazy dog. Ærøskøbing naïve café",
+          "chars": "\\p{Script=Latn}",
+          "expect": [
+            "Liberation Sans"
+          ]
+        },
+        {
+          "css": "\"Times New Roman\", Times",
+          "sample": "Times New Roman: The quick brown fox jumps over the lazy dog.",
+          "chars": "\\p{Script=Latn}",
+          "expect": [
+            "Liberation Serif"
+          ]
+        },
+        {
+          "css": "\"Courier New\", Courier",
+          "sample": "Courier New: fn main() { println!(\"hello\"); } // 0O1lI",
+          "chars": "\\p{Script=Latn}",
+          "expect": [
+            "Liberation Mono"
+          ]
+        },
+        {
+          "css": "sans-serif",
+          "sample": "sans-serif: The quick brown fox jumps over the lazy dog. 0123456789",
+          "chars": "\\p{Script=Latn}",
+          "expect": [
+            "Liberation Sans",
+            "Noto Sans"
+          ]
+        },
+        {
+          "css": "serif",
+          "sample": "serif: The quick brown fox jumps over the lazy dog. 0123456789",
+          "chars": "\\p{Script=Latn}",
+          "expect": [
+            "Liberation Serif",
+            "Noto Serif"
+          ]
+        },
+        {
+          "css": "monospace",
+          "sample": "monospace: fn main() { println!(\"hello\"); } // 0O1lI",
+          "chars": "\\p{Script=Latn}",
+          "expect": [
+            "Liberation Mono",
+            "Noto Sans Mono"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans",
+      "version": "2.015",
+      "url": "https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSans-v2.015/NotoSans-v2.015.zip",
+      "size": 117491253,
+      "sha256": "0c34df072a3fa7efbb7cbf34950e1f971a4447cffe365d3a359e2d4089b958f5",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSans/hinted/ttf/NotoSans-Regular.ttf",
+        "NotoSans/hinted/ttf/NotoSans-Bold.ttf",
+        "NotoSans/hinted/ttf/NotoSans-Italic.ttf",
+        "NotoSans/hinted/ttf/NotoSans-BoldItalic.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans",
+          "langs": [],
+          "generic": false
+        }
+      ],
+      "checks": [
+        {
+          "css": "\"Noto Sans\"",
+          "lang": "el",
+          "sample": "Noto Sans: Ελληνικά, Русский, Tiếng Việt",
+          "chars": "\\p{Script=Grek}|\\p{Script=Cyrl}",
+          "expect": [
+            "Noto Sans"
+          ]
+        },
+        {
+          "lang": "ru",
+          "sample": "Русский язык, Українська, Ελληνικά",
+          "chars": "\\p{Script=Grek}|\\p{Script=Cyrl}",
+          "expect": [
+            "Noto Sans",
+            "Liberation Sans"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Serif",
+      "version": "2.015",
+      "url": "https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSerif-v2.015/NotoSerif-v2.015.zip",
+      "size": 70637713,
+      "sha256": "0e9a43c8a4b94ac76f55069ed1d7385bbcaf6b99527a94deb5619e032b7e76c1",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSerif/hinted/ttf/NotoSerif-Regular.ttf",
+        "NotoSerif/hinted/ttf/NotoSerif-Bold.ttf",
+        "NotoSerif/hinted/ttf/NotoSerif-Italic.ttf",
+        "NotoSerif/hinted/ttf/NotoSerif-BoldItalic.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Serif",
+          "langs": [],
+          "generic": false
+        }
+      ],
+      "checks": [
+        {
+          "css": "\"Noto Serif\"",
+          "lang": "el",
+          "sample": "Noto Serif: Ελληνικά, Русский, Tiếng Việt",
+          "chars": "\\p{Script=Grek}|\\p{Script=Cyrl}",
+          "expect": [
+            "Noto Serif"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Mono",
+      "version": "2.014",
+      "url": "https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSansMono-v2.014/NotoSansMono-v2.014.zip",
+      "size": 31592998,
+      "sha256": "090cf6c5e03f337a755630ca888b1fef463e64ae7b33ee134e9309c05f978732",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansMono/hinted/ttf/NotoSansMono-Regular.ttf",
+        "NotoSansMono/hinted/ttf/NotoSansMono-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Mono",
+          "langs": [],
+          "generic": false
+        }
+      ],
+      "checks": [
+        {
+          "css": "\"Noto Sans Mono\"",
+          "lang": "ru",
+          "sample": "Noto Sans Mono: Русский, Ελληνικά 0O1lI",
+          "chars": "\\p{Script=Grek}|\\p{Script=Cyrl}",
+          "expect": [
+            "Noto Sans Mono"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans CJK",
+      "version": "2.004",
+      "url": "https://github.com/googlefonts/noto-cjk/releases/download/Sans2.004/03_NotoSansCJK-OTC.zip",
+      "size": 104680673,
+      "sha256": "528f4e1b25ff3badb0321b38d015d954c4c0de926c7830ef50e4a1948f6a3eed",
+      "license": "LICENSE",
+      "files": [
+        "NotoSansCJK-Regular.ttc",
+        "NotoSansCJK-Bold.ttc"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans CJK SC",
+          "langs": [
+            "zh-cn",
+            "zh-sg"
+          ],
+          "generic": false
+        },
+        {
+          "name": "Noto Sans CJK TC",
+          "langs": [
+            "zh-tw"
+          ],
+          "generic": false
+        },
+        {
+          "name": "Noto Sans CJK HK",
+          "langs": [
+            "zh-hk",
+            "zh-mo"
+          ],
+          "generic": false
+        },
+        {
+          "name": "Noto Sans CJK JP",
+          "langs": [
+            "ja"
+          ],
+          "generic": false
+        },
+        {
+          "name": "Noto Sans CJK KR",
+          "langs": [
+            "ko"
+          ],
+          "generic": false
+        }
+      ],
+      "checks": [
+        {
+          "lang": "zh-CN",
+          "sample": "简体中文：汉字显示正常，这是一个测试。",
+          "chars": "\\p{Script=Hani}|\\p{Script=Hira}|\\p{Script=Kana}|\\p{Script=Hang}|\\p{Script=Bopo}",
+          "expect": [
+            "Noto Sans CJK SC"
+          ]
+        },
+        {
+          "lang": "zh-TW",
+          "sample": "繁體中文：臺灣的漢字顯示正常。",
+          "chars": "\\p{Script=Hani}|\\p{Script=Hira}|\\p{Script=Kana}|\\p{Script=Hang}|\\p{Script=Bopo}",
+          "expect": [
+            "Noto Sans CJK TC"
+          ]
+        },
+        {
+          "lang": "zh-HK",
+          "sample": "香港繁體：粵語字，嘅、咗、啲。",
+          "chars": "\\p{Script=Hani}|\\p{Script=Hira}|\\p{Script=Kana}|\\p{Script=Hang}|\\p{Script=Bopo}",
+          "expect": [
+            "Noto Sans CJK HK",
+            "Noto Sans CJK TC"
+          ]
+        },
+        {
+          "lang": "ja",
+          "sample": "日本語：ひらがな、カタカナ、漢字のテストです。",
+          "chars": "\\p{Script=Hani}|\\p{Script=Hira}|\\p{Script=Kana}|\\p{Script=Hang}|\\p{Script=Bopo}",
+          "expect": [
+            "Noto Sans CJK JP"
+          ]
+        },
+        {
+          "lang": "ko",
+          "sample": "한국어: 다람쥐 헌 쳇바퀴에 타고파",
+          "chars": "\\p{Script=Hani}|\\p{Script=Hira}|\\p{Script=Kana}|\\p{Script=Hang}|\\p{Script=Bopo}",
+          "expect": [
+            "Noto Sans CJK KR"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Arabic",
+      "version": "2.013",
+      "url": "https://github.com/notofonts/arabic/releases/download/NotoSansArabic-v2.013/NotoSansArabic-v2.013.zip",
+      "size": 18777381,
+      "sha256": "1301aceaea84c501cf2e6dcfb3182e2328c8eae5725817fcb239672bda7154f1",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansArabic/hinted/ttf/NotoSansArabic-Regular.ttf",
+        "NotoSansArabic/hinted/ttf/NotoSansArabic-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Arabic",
+          "langs": [
+            "ar",
+            "fa",
+            "ur",
+            "ps",
+            "ckb",
+            "sd",
+            "ug"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "ar",
+          "sample": "العربية فارسی اردو",
+          "chars": "\\p{Script=Arab}",
+          "expect": [
+            "Noto Sans Arabic"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Hebrew",
+      "version": "3.001",
+      "url": "https://github.com/notofonts/hebrew/releases/download/NotoSansHebrew-v3.001/NotoSansHebrew-v3.001.zip",
+      "size": 3734185,
+      "sha256": "df0a71814b4e63644cf40fcc4529111b61266b7a2dafbe95068b29a7520cc3cb",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansHebrew/hinted/ttf/NotoSansHebrew-Regular.ttf",
+        "NotoSansHebrew/hinted/ttf/NotoSansHebrew-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Hebrew",
+          "langs": [
+            "he",
+            "yi"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "he",
+          "sample": "עברית ייִדיש",
+          "chars": "\\p{Script=Hebr}",
+          "expect": [
+            "Noto Sans Hebrew"
+          ],
+          "css": "\"Noto Sans Hebrew\""
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Devanagari",
+      "version": "2.007",
+      "url": "https://github.com/notofonts/devanagari/releases/download/NotoSansDevanagari-v2.007/NotoSansDevanagari-v2.007.zip",
+      "size": 18449254,
+      "sha256": "820c7da45b1e63562cb41c0a8cac5d9a4202312043a3a040ed1325857ef469b1",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansDevanagari/hinted/ttf/NotoSansDevanagari-Regular.ttf",
+        "NotoSansDevanagari/hinted/ttf/NotoSansDevanagari-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Devanagari",
+          "langs": [
+            "hi",
+            "mr",
+            "ne",
+            "sa"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "hi",
+          "sample": "हिन्दी मराठी नेपाली",
+          "chars": "\\p{Script=Deva}",
+          "expect": [
+            "Noto Sans Devanagari"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Bengali",
+      "version": "3.011",
+      "url": "https://github.com/notofonts/bengali/releases/download/NotoSansBengali-v3.011/NotoSansBengali-v3.011.zip",
+      "size": 14185062,
+      "sha256": "2aca24bf71665e66c32e14862ee58857dd8b8b07b6321ec7c96f3121ad6683b1",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansBengali/hinted/ttf/NotoSansBengali-Regular.ttf",
+        "NotoSansBengali/hinted/ttf/NotoSansBengali-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Bengali",
+          "langs": [
+            "bn",
+            "as"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "bn",
+          "sample": "বাংলা অসমীয়া",
+          "chars": "\\p{Script=Beng}",
+          "expect": [
+            "Noto Sans Bengali"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Tamil",
+      "version": "2.004",
+      "url": "https://github.com/notofonts/tamil/releases/download/NotoSansTamil-v2.004/NotoSansTamil-v2.004.zip",
+      "size": 15229102,
+      "sha256": "f8284e0f200a7f29a439b4ec88280d864b2b31f8479111c5b658ba6da38b3005",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansTamil/hinted/ttf/NotoSansTamil-Regular.ttf",
+        "NotoSansTamil/hinted/ttf/NotoSansTamil-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Tamil",
+          "langs": [
+            "ta"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "ta",
+          "sample": "தமிழ்",
+          "chars": "\\p{Script=Taml}",
+          "expect": [
+            "Noto Sans Tamil"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Telugu",
+      "version": "2.005",
+      "url": "https://github.com/notofonts/telugu/releases/download/NotoSansTelugu-v2.005/NotoSansTelugu-v2.005.zip",
+      "size": 34749676,
+      "sha256": "3553e00ca341dc06f4a143c604dd93a1342553169b5a06dc8b0ff50ab6eba0a2",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansTelugu/hinted/ttf/NotoSansTelugu-Regular.ttf",
+        "NotoSansTelugu/hinted/ttf/NotoSansTelugu-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Telugu",
+          "langs": [
+            "te"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "te",
+          "sample": "తెలుగు",
+          "chars": "\\p{Script=Telu}",
+          "expect": [
+            "Noto Sans Telugu"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Thai",
+      "version": "2.002",
+      "url": "https://github.com/notofonts/thai/releases/download/NotoSansThai-v2.002/NotoSansThai-v2.002.zip",
+      "size": 4720990,
+      "sha256": "af889cc673fc714060ce5e4e088fbad32aa4c0571a19958efeaff128a22da485",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansThai/hinted/ttf/NotoSansThai-Regular.ttf",
+        "NotoSansThai/hinted/ttf/NotoSansThai-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Thai",
+          "langs": [
+            "th"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "th",
+          "sample": "ภาษาไทย",
+          "chars": "\\p{Script=Thai}",
+          "expect": [
+            "Noto Sans Thai"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Lao",
+      "version": "2.003",
+      "url": "https://github.com/notofonts/lao/releases/download/NotoSansLao-v2.003/NotoSansLao-v2.003.zip",
+      "size": 4825278,
+      "sha256": "5a87c31b1a40ef8147c1e84437e5f0ceba2d4dbbfc0b56a65821ad29870da8c0",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansLao/hinted/ttf/NotoSansLao-Regular.ttf",
+        "NotoSansLao/hinted/ttf/NotoSansLao-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Lao",
+          "langs": [
+            "lo"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "lo",
+          "sample": "ພາສາລາວ",
+          "chars": "\\p{Script=Laoo}",
+          "expect": [
+            "Noto Sans Lao"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Khmer",
+      "version": "2.004",
+      "url": "https://github.com/notofonts/khmer/releases/download/NotoSansKhmer-v2.004/NotoSansKhmer-v2.004.zip",
+      "size": 8949267,
+      "sha256": "19382ca97d62febea1c735ebee35a5aa4f03beca9b6ea6f6d86b7a7a0025a688",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansKhmer/hinted/ttf/NotoSansKhmer-Regular.ttf",
+        "NotoSansKhmer/hinted/ttf/NotoSansKhmer-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Khmer",
+          "langs": [
+            "km"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "km",
+          "sample": "ភាសាខ្មែរ",
+          "chars": "\\p{Script=Khmr}",
+          "expect": [
+            "Noto Sans Khmer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Myanmar",
+      "version": "2.107",
+      "url": "https://github.com/notofonts/myanmar/releases/download/NotoSansMyanmar-v2.107/NotoSansMyanmar-v2.107.zip",
+      "size": 19571621,
+      "sha256": "c4995ee97f1f267b46cf83734dbf18a3cfd431e387b6fe38e90279546f260c4b",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansMyanmar/hinted/ttf/NotoSansMyanmar-Regular.ttf",
+        "NotoSansMyanmar/hinted/ttf/NotoSansMyanmar-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Myanmar",
+          "langs": [
+            "my"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "my",
+          "sample": "မြန်မာဘာသာ",
+          "chars": "\\p{Script=Mymr}",
+          "expect": [
+            "Noto Sans Myanmar"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Georgian",
+      "version": "2.005",
+      "url": "https://github.com/notofonts/georgian/releases/download/NotoSansGeorgian-v2.005/NotoSansGeorgian-v2.005.zip",
+      "size": 6705397,
+      "sha256": "10e85011008108308e6feab0408242acb07804da61ede3d3ff236461ae07ab1b",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansGeorgian/hinted/ttf/NotoSansGeorgian-Regular.ttf",
+        "NotoSansGeorgian/hinted/ttf/NotoSansGeorgian-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Georgian",
+          "langs": [
+            "ka"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "ka",
+          "sample": "ქართული ენა",
+          "chars": "\\p{Script=Geor}",
+          "expect": [
+            "Noto Sans Georgian"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Armenian",
+      "version": "2.008",
+      "url": "https://github.com/notofonts/armenian/releases/download/NotoSansArmenian-v2.008/NotoSansArmenian-v2.008.zip",
+      "size": 4472441,
+      "sha256": "eab89b99e134177ca6a3f9f0412a7cb812aafceb13175d686b4c45cb237f64ac",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansArmenian/hinted/ttf/NotoSansArmenian-Regular.ttf",
+        "NotoSansArmenian/hinted/ttf/NotoSansArmenian-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Armenian",
+          "langs": [
+            "hy"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "hy",
+          "sample": "Հայերեն",
+          "chars": "\\p{Script=Armn}",
+          "expect": [
+            "Noto Sans Armenian"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Ethiopic",
+      "version": "2.102",
+      "url": "https://github.com/notofonts/ethiopic/releases/download/NotoSansEthiopic-v2.102/NotoSansEthiopic-v2.102.zip",
+      "size": 29992463,
+      "sha256": "4e3e53aa1586344ba842f310ab35c65281fa11e8cc2d259613ad06a9ae994d52",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansEthiopic/hinted/ttf/NotoSansEthiopic-Regular.ttf",
+        "NotoSansEthiopic/hinted/ttf/NotoSansEthiopic-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Ethiopic",
+          "langs": [
+            "am",
+            "ti"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "am",
+          "sample": "አማርኛ ትግርኛ",
+          "chars": "\\p{Script=Ethi}",
+          "expect": [
+            "Noto Sans Ethiopic"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Gujarati",
+      "version": "2.106",
+      "url": "https://github.com/notofonts/gujarati/releases/download/NotoSansGujarati-v2.106/NotoSansGujarati-v2.106.zip",
+      "size": 30324052,
+      "sha256": "a4ff1dd03a4998ba08ee7ee43be2aca7594a884982049e48c25ccc48991474ed",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansGujarati/hinted/ttf/NotoSansGujarati-Regular.ttf",
+        "NotoSansGujarati/hinted/ttf/NotoSansGujarati-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Gujarati",
+          "langs": [
+            "gu"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "gu",
+          "sample": "ગુજરાતી",
+          "chars": "\\p{Script=Gujr}",
+          "expect": [
+            "Noto Sans Gujarati"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Gurmukhi",
+      "version": "2.004",
+      "url": "https://github.com/notofonts/gurmukhi/releases/download/NotoSansGurmukhi-v2.004/NotoSansGurmukhi-v2.004.zip",
+      "size": 12566618,
+      "sha256": "a55ee5ee831ce3a4bb73bdc46bd0a02db6eb9445c370a0afbc529379ed8cea52",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansGurmukhi/hinted/ttf/NotoSansGurmukhi-Regular.ttf",
+        "NotoSansGurmukhi/hinted/ttf/NotoSansGurmukhi-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Gurmukhi",
+          "langs": [
+            "pa"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "pa",
+          "sample": "ਪੰਜਾਬੀ",
+          "chars": "\\p{Script=Guru}",
+          "expect": [
+            "Noto Sans Gurmukhi"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Kannada",
+      "version": "2.006",
+      "url": "https://github.com/notofonts/kannada/releases/download/NotoSansKannada-v2.006/NotoSansKannada-v2.006.zip",
+      "size": 27782627,
+      "sha256": "902b1b92018f7c96862d68d0a39ef03b978203cd4c3f55d6760f597657b51c44",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansKannada/hinted/ttf/NotoSansKannada-Regular.ttf",
+        "NotoSansKannada/hinted/ttf/NotoSansKannada-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Kannada",
+          "langs": [
+            "kn"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "kn",
+          "sample": "ಕನ್ನಡ",
+          "chars": "\\p{Script=Knda}",
+          "expect": [
+            "Noto Sans Kannada"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Malayalam",
+      "version": "2.104",
+      "url": "https://github.com/notofonts/malayalam/releases/download/NotoSansMalayalam-v2.104/NotoSansMalayalam-v2.104.zip",
+      "size": 21451358,
+      "sha256": "2ebd31e79f2893025d659def7784e0ec3557e7ff9ac105adcc82d35782913bf2",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansMalayalam/hinted/ttf/NotoSansMalayalam-Regular.ttf",
+        "NotoSansMalayalam/hinted/ttf/NotoSansMalayalam-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Malayalam",
+          "langs": [
+            "ml"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "ml",
+          "sample": "മലയാളം",
+          "chars": "\\p{Script=Mlym}",
+          "expect": [
+            "Noto Sans Malayalam"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Sinhala",
+      "version": "3.000",
+      "url": "https://github.com/notofonts/sinhala/releases/download/NotoSansSinhala-v3.000/NotoSansSinhala-v3.000.zip",
+      "size": 4300849,
+      "sha256": "25b2c787e0b34b82ccedce026e6519cc535394a6bd8520d5a1df45c233807d8a",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansSinhala/hinted/ttf/NotoSansSinhala-Regular.ttf",
+        "NotoSansSinhala/hinted/ttf/NotoSansSinhala-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Sinhala",
+          "langs": [
+            "si"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "si",
+          "sample": "සිංහල",
+          "chars": "\\p{Script=Sinh}",
+          "expect": [
+            "Noto Sans Sinhala"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Oriya",
+      "version": "2.007",
+      "url": "https://github.com/notofonts/oriya/releases/download/NotoSansOriya-v2.007/NotoSansOriya-v2.007.zip",
+      "size": 5454788,
+      "sha256": "025b637e2d391f422ae12f4eb365876ce3b195283025ababb74ecf6baae35442",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansOriya/hinted/ttf/NotoSansOriya-Regular.ttf",
+        "NotoSansOriya/hinted/ttf/NotoSansOriya-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Oriya",
+          "langs": [
+            "or"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "or",
+          "sample": "ଓଡ଼ିଆ",
+          "chars": "\\p{Script=Orya}",
+          "expect": [
+            "Noto Sans Oriya"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Thaana",
+      "version": "3.001",
+      "url": "https://github.com/notofonts/thaana/releases/download/NotoSansThaana-v3.001/NotoSansThaana-v3.001.zip",
+      "size": 1528046,
+      "sha256": "001ecb8ee72058c82a62c078448a54876924345a468b343773cbace373a1ad05",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansThaana/hinted/ttf/NotoSansThaana-Regular.ttf",
+        "NotoSansThaana/hinted/ttf/NotoSansThaana-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Thaana",
+          "langs": [
+            "dv"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "dv",
+          "sample": "ދިވެހި",
+          "chars": "\\p{Script=Thaa}",
+          "expect": [
+            "Noto Sans Thaana"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Serif Tibetan",
+      "version": "2.103",
+      "url": "https://github.com/notofonts/tibetan/releases/download/NotoSerifTibetan-v2.103/NotoSerifTibetan-v2.103.zip",
+      "size": 21771020,
+      "sha256": "4fba4a43cd61e68bc5b3a496f708ebce2c1937df02f2c8e81c4272b2b060a896",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSerifTibetan/hinted/ttf/NotoSerifTibetan-Regular.ttf",
+        "NotoSerifTibetan/hinted/ttf/NotoSerifTibetan-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Serif Tibetan",
+          "langs": [
+            "bo",
+            "dz"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "bo",
+          "sample": "བོད་ཡིག",
+          "chars": "\\p{Script=Tibt}",
+          "expect": [
+            "Noto Serif Tibetan"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Syriac",
+      "version": "3.000",
+      "url": "https://github.com/notofonts/syriac/releases/download/NotoSansSyriac-v3.000/NotoSansSyriac-v3.000.zip",
+      "size": 1009792,
+      "sha256": "1d31ac6f3f221332005e10d74af6e0e9bb2fb4ed67c306788d12acba33616538",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansSyriac/hinted/ttf/NotoSansSyriac-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Syriac",
+          "langs": [
+            "syr"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "syr",
+          "sample": "ܠܫܢܐ ܣܘܪܝܝܐ",
+          "chars": "\\p{Script=Syrc}",
+          "expect": [
+            "Noto Sans Syriac"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Mongolian",
+      "version": "3.100",
+      "url": "https://github.com/notofonts/mongolian/releases/download/NotoSansMongolian-v3.100/NotoSansMongolian-v3.100.zip",
+      "size": 511609,
+      "sha256": "5752442011424b220c2557737daa2b3aec3af28180ec7989fba85033d8fba886",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansMongolian/hinted/ttf/NotoSansMongolian-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Mongolian",
+          "langs": [],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "sample": "ᠮᠣᠩᠭᠣᠯ",
+          "chars": "\\p{Script=Mong}",
+          "expect": [
+            "Noto Sans Mongolian"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Tifinagh",
+      "version": "2.006",
+      "url": "https://github.com/notofonts/tifinagh/releases/download/NotoSansTifinagh-v2.006/NotoSansTifinagh-v2.006.zip",
+      "size": 3134786,
+      "sha256": "6d90b8cac0aba52fa4599b5a3fed5def0d29fb8eee01a328d10399275d8636db",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansTifinagh/hinted/ttf/NotoSansTifinagh-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Tifinagh",
+          "langs": [
+            "zgh"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "zgh",
+          "sample": "ⵜⴰⵎⴰⵣⵉⵖⵜ",
+          "chars": "\\p{Script=Tfng}",
+          "expect": [
+            "Noto Sans Tifinagh"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Cherokee",
+      "version": "2.001",
+      "url": "https://github.com/notofonts/cherokee/releases/download/NotoSansCherokee-v2.001/NotoSansCherokee-v2.001.zip",
+      "size": 3800204,
+      "sha256": "986b7fcf5c4cef9a7329aad8aea93d5c1b974e465eb7514f39517cace043a58d",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansCherokee/hinted/ttf/NotoSansCherokee-Regular.ttf",
+        "NotoSansCherokee/hinted/ttf/NotoSansCherokee-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Cherokee",
+          "langs": [
+            "chr"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "chr",
+          "sample": "ᏣᎳᎩ ᎦᏬᏂᎯᏍᏗ",
+          "chars": "\\p{Script=Cher}",
+          "expect": [
+            "Noto Sans Cherokee"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Canadian Aboriginal",
+      "version": "2.004",
+      "url": "https://github.com/notofonts/canadian-aboriginal/releases/download/NotoSansCanadianAboriginal-v2.004/NotoSansCanadianAboriginal-v2.004.zip",
+      "size": 3718530,
+      "sha256": "29dae8f43f9157319f0196dbb9d17ba90984e11a69f821a394909756b0bade96",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansCanadianAboriginal/hinted/ttf/NotoSansCanadianAboriginal-Regular.ttf",
+        "NotoSansCanadianAboriginal/hinted/ttf/NotoSansCanadianAboriginal-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Canadian Aboriginal",
+          "langs": [
+            "iu",
+            "cr"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "iu",
+          "sample": "ᐃᓄᒃᑎᑐᑦ",
+          "chars": "\\p{Script=Cans}",
+          "expect": [
+            "Noto Sans Canadian Aboriginal"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Yi",
+      "version": "2.002",
+      "url": "https://github.com/notofonts/yi/releases/download/NotoSansYi-v2.002/NotoSansYi-v2.002.zip",
+      "size": 684215,
+      "sha256": "fc7b05d7980e4dc95419ec5d7d0597009b566b8c48441cb3b745ffdacc3b2b17",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansYi/hinted/ttf/NotoSansYi-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Yi",
+          "langs": [
+            "ii"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "ii",
+          "sample": "ꀀꁵꃩꅝꇑꉅꊹꌭꎡꐕ",
+          "chars": "\\p{Script=Yiii}",
+          "expect": [
+            "Noto Sans Yi"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Adlam",
+      "version": "3.002",
+      "url": "https://github.com/notofonts/adlam/releases/download/NotoSansAdlam-v3.002/NotoSansAdlam-v3.002.zip",
+      "size": 758626,
+      "sha256": "a8fc406361fcbd8ebb44d94fd41f75838965ac0b65e61c98e532aefb13a3c9d3",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansAdlam/hinted/ttf/NotoSansAdlam-Regular.ttf",
+        "NotoSansAdlam/hinted/ttf/NotoSansAdlam-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Adlam",
+          "langs": [],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "sample": "𞤀𞤆𞤌𞤒𞤘𞤞𞤤𞤪𞤰𞤶",
+          "chars": "\\p{Script=Adlm}",
+          "expect": [
+            "Noto Sans Adlam"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans NKo",
+      "version": "2.004",
+      "url": "https://github.com/notofonts/nko/releases/download/NotoSansNKo-v2.004/NotoSansNKo-v2.004.zip",
+      "size": 170468,
+      "sha256": "8324d3c34a9006a22e121fbe7454ddd0006513a715de027005e894c8a2dafbb2",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansNKo/hinted/ttf/NotoSansNKo-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans NKo",
+          "langs": [
+            "nqo"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "nqo",
+          "sample": "ߊߍߐߓߖߙߜߟߢߥ",
+          "chars": "\\p{Script=Nkoo}",
+          "expect": [
+            "Noto Sans NKo"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Vai",
+      "version": "2.001",
+      "url": "https://github.com/notofonts/vai/releases/download/NotoSansVai-v2.001/NotoSansVai-v2.001.zip",
+      "size": 250714,
+      "sha256": "03c1d3dbb60fcaaf17ed8824a32e9176b3ab7b5537e2f738114c7bf40e1c0f75",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansVai/hinted/ttf/NotoSansVai-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Vai",
+          "langs": [
+            "vai"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "vai",
+          "sample": "ꔀꔜꔸꕔꕰꖌꖨꗄꗠꗼ",
+          "chars": "\\p{Script=Vaii}",
+          "expect": [
+            "Noto Sans Vai"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Ol Chiki",
+      "version": "2.003",
+      "url": "https://github.com/notofonts/ol-chiki/releases/download/NotoSansOlChiki-v2.003/NotoSansOlChiki-v2.003.zip",
+      "size": 632111,
+      "sha256": "2fa03cf0917cd560f75a23b49e3bd9ecaed596b7a8b48894d064828a972520e1",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansOlChiki/hinted/ttf/NotoSansOlChiki-Regular.ttf",
+        "NotoSansOlChiki/hinted/ttf/NotoSansOlChiki-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Ol Chiki",
+          "langs": [
+            "sat"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "sat",
+          "sample": "ᱚᱝᱠᱣᱦᱩᱬᱯᱲᱵ",
+          "chars": "\\p{Script=Olck}",
+          "expect": [
+            "Noto Sans Ol Chiki"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Javanese",
+      "version": "2.005",
+      "url": "https://github.com/notofonts/javanese/releases/download/NotoSansJavanese-v2.005/NotoSansJavanese-v2.005.zip",
+      "size": 1355672,
+      "sha256": "3d096aeee4dc607a91e7568785595643cb5fde4a0b7c9c7f13a762c48d37a0cf",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansJavanese/hinted/ttf/NotoSansJavanese-Regular.ttf",
+        "NotoSansJavanese/hinted/ttf/NotoSansJavanese-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Javanese",
+          "langs": [],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "sample": "ꦄꦈꦌꦐꦔꦘꦜꦠꦤꦨ",
+          "chars": "\\p{Script=Java}",
+          "expect": [
+            "Noto Sans Javanese"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Balinese",
+      "version": "2.006",
+      "url": "https://github.com/notofonts/balinese/releases/download/NotoSansBalinese-v2.006/NotoSansBalinese-v2.006.zip",
+      "size": 1860220,
+      "sha256": "b3fef31d0a12e2675f802694d37eacae0d141598c514f5d45b4681c4997d52be",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansBalinese/hinted/ttf/NotoSansBalinese-Regular.ttf",
+        "NotoSansBalinese/hinted/ttf/NotoSansBalinese-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Balinese",
+          "langs": [],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "sample": "ᬅᬊᬏᬔᬙᬞᬣᬨᬭᬲ",
+          "chars": "\\p{Script=Bali}",
+          "expect": [
+            "Noto Sans Balinese"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Sundanese",
+      "version": "2.005",
+      "url": "https://github.com/notofonts/sundanese/releases/download/NotoSansSundanese-v2.005/NotoSansSundanese-v2.005.zip",
+      "size": 624146,
+      "sha256": "79155cf623759415986c6f86e96a92264fc0621f583896ee569f184700c46b9d",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansSundanese/hinted/ttf/NotoSansSundanese-Regular.ttf",
+        "NotoSansSundanese/hinted/ttf/NotoSansSundanese-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Sundanese",
+          "langs": [],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "sample": "ᮃᮆᮉᮌᮏᮒᮕᮘᮛᮞ",
+          "chars": "\\p{Script=Sund}",
+          "expect": [
+            "Noto Sans Sundanese"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Batak",
+      "version": "2.005",
+      "url": "https://github.com/notofonts/batak/releases/download/NotoSansBatak-v2.005/NotoSansBatak-v2.005.zip",
+      "size": 142501,
+      "sha256": "035ac2898a02562b5a34886351935a9a0d9a61d1acb4b60248b42fe931f62bcb",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansBatak/hinted/ttf/NotoSansBatak-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Batak",
+          "langs": [],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "sample": "ᯀᯃᯆᯉᯌᯏᯒᯕᯘᯛ",
+          "chars": "\\p{Script=Batk}",
+          "expect": [
+            "Noto Sans Batak"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Bamum",
+      "version": "2.002",
+      "url": "https://github.com/notofonts/bamum/releases/download/NotoSansBamum-v2.002/NotoSansBamum-v2.002.zip",
+      "size": 3725915,
+      "sha256": "bdb8c3d8cc02bcd5a3e1c6044675392e7ccb7c0ea2c2a12e63c55392c2e10ed4",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansBamum/hinted/ttf/NotoSansBamum-Regular.ttf",
+        "NotoSansBamum/hinted/ttf/NotoSansBamum-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Bamum",
+          "langs": [],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "sample": "ꚠꛟ𖠸𖡷𖢶𖣵𖤴𖥳𖦲𖧱",
+          "chars": "\\p{Script=Bamu}",
+          "expect": [
+            "Noto Sans Bamum"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Chakma",
+      "version": "2.003",
+      "url": "https://github.com/notofonts/chakma/releases/download/NotoSansChakma-v2.003/NotoSansChakma-v2.003.zip",
+      "size": 280195,
+      "sha256": "18bcea554ee3457ccf9c26cd6aa498392b792510abc3a7e8405d31e24e003e1b",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansChakma/hinted/ttf/NotoSansChakma-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Chakma",
+          "langs": [
+            "ccp"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "ccp",
+          "sample": "𑄃𑄆𑄉𑄌𑄏𑄒𑄕𑄘𑄛𑄞",
+          "chars": "\\p{Script=Cakm}",
+          "expect": [
+            "Noto Sans Chakma"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Cham",
+      "version": "2.005",
+      "url": "https://github.com/notofonts/cham/releases/download/NotoSansCham-v2.005/NotoSansCham-v2.005.zip",
+      "size": 1777571,
+      "sha256": "24d8125d3110066e833704d04c5aae815c86f57bae433e4d6a1e57de7bc966c0",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansCham/hinted/ttf/NotoSansCham-Regular.ttf",
+        "NotoSansCham/hinted/ttf/NotoSansCham-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Cham",
+          "langs": [],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "sample": "ꨀꨅꨊꨏꨔꨙꨞꨣꨨꩅ",
+          "chars": "\\p{Script=Cham}",
+          "expect": [
+            "Noto Sans Cham"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Hanifi Rohingya",
+      "version": "2.102",
+      "url": "https://github.com/notofonts/hanifi-rohingya/releases/download/NotoSansHanifiRohingya-v2.102/NotoSansHanifiRohingya-v2.102.zip",
+      "size": 747431,
+      "sha256": "8f82aadc30901e026c562d0f348749c660fa120fc2c351a300be46b857ab134c",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansHanifiRohingya/hinted/ttf/NotoSansHanifiRohingya-Regular.ttf",
+        "NotoSansHanifiRohingya/hinted/ttf/NotoSansHanifiRohingya-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Hanifi Rohingya",
+          "langs": [],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "sample": "𐴀𐴃𐴆𐴉𐴌𐴏𐴒𐴕𐴘𐴛",
+          "chars": "\\p{Script=Rohg}",
+          "expect": [
+            "Noto Sans Hanifi Rohingya"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Kayah Li",
+      "version": "2.002",
+      "url": "https://github.com/notofonts/kayah-li/releases/download/NotoSansKayahLi-v2.002/NotoSansKayahLi-v2.002.zip",
+      "size": 521991,
+      "sha256": "6799ec419fb8ae654782ea8ec43e49e08cd861147015983e92e84349b5d74ad6",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansKayahLi/hinted/ttf/NotoSansKayahLi-Regular.ttf",
+        "NotoSansKayahLi/hinted/ttf/NotoSansKayahLi-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Kayah Li",
+          "langs": [],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "sample": "ꤊꤌꤎꤐꤒꤔꤖꤘꤚꤜ",
+          "chars": "\\p{Script=Kali}",
+          "expect": [
+            "Noto Sans Kayah Li"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Lepcha",
+      "version": "2.006",
+      "url": "https://github.com/notofonts/lepcha/releases/download/NotoSansLepcha-v2.006/NotoSansLepcha-v2.006.zip",
+      "size": 167194,
+      "sha256": "26f9e6d45f3740599d366d490909c49d5a30f86ea957febf3dd36ce63b143e24",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansLepcha/hinted/ttf/NotoSansLepcha-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Lepcha",
+          "langs": [
+            "lep"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "lep",
+          "sample": "ᰀᰃᰆᰉᰌᰏᰒᰕᰘᰛ",
+          "chars": "\\p{Script=Lepc}",
+          "expect": [
+            "Noto Sans Lepcha"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Limbu",
+      "version": "2.005",
+      "url": "https://github.com/notofonts/limbu/releases/download/NotoSansLimbu-v2.005/NotoSansLimbu-v2.005.zip",
+      "size": 124531,
+      "sha256": "6cdd3712a06017e40bd1069d8f271932d03bd85aa6d8fa7cb361b32d747d1e94",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansLimbu/hinted/ttf/NotoSansLimbu-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Limbu",
+          "langs": [
+            "lif"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "lif",
+          "sample": "ᤀᤃᤆᤉᤌᤏᤒᤕᤘᤛ",
+          "chars": "\\p{Script=Limb}",
+          "expect": [
+            "Noto Sans Limbu"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Lisu",
+      "version": "2.102",
+      "url": "https://github.com/notofonts/lisu/releases/download/NotoSansLisu-v2.102/NotoSansLisu-v2.102.zip",
+      "size": 513379,
+      "sha256": "b12a1ff762680681b7ce4d98dd29a7f54d90f5bcadd10c955afc640a27b3a268",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansLisu/hinted/ttf/NotoSansLisu-Regular.ttf",
+        "NotoSansLisu/hinted/ttf/NotoSansLisu-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Lisu",
+          "langs": [
+            "lis"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "lis",
+          "sample": "ꓐꓔꓘꓜꓠꓤꓨꓬꓰꓴ",
+          "chars": "\\p{Script=Lisu}",
+          "expect": [
+            "Noto Sans Lisu"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Mandaic",
+      "version": "2.003",
+      "url": "https://github.com/notofonts/mandaic/releases/download/NotoSansMandaic-v2.003/NotoSansMandaic-v2.003.zip",
+      "size": 134688,
+      "sha256": "e36cd42da5e7397feee3a3b1046a9d1f0328d29a9fb4c27c716fde630f26a7f4",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansMandaic/hinted/ttf/NotoSansMandaic-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Mandaic",
+          "langs": [
+            "mid"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "mid",
+          "sample": "ࡀࡂࡄࡆࡈࡊࡌࡎࡐࡒ",
+          "chars": "\\p{Script=Mand}",
+          "expect": [
+            "Noto Sans Mandaic"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Meetei Mayek",
+      "version": "2.002",
+      "url": "https://github.com/notofonts/meetei-mayek/releases/download/NotoSansMeeteiMayek-v2.002/NotoSansMeeteiMayek-v2.002.zip",
+      "size": 1434292,
+      "sha256": "b9b9fbd260319a2ecec5c9f33649e3f5f4e090135b7067457bb9c32372924b1b",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansMeeteiMayek/hinted/ttf/NotoSansMeeteiMayek-Regular.ttf",
+        "NotoSansMeeteiMayek/hinted/ttf/NotoSansMeeteiMayek-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Meetei Mayek",
+          "langs": [],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "sample": "ꫠꫤꫨꯀꯄꯈꯌꯐꯔꯘ",
+          "chars": "\\p{Script=Mtei}",
+          "expect": [
+            "Noto Sans Meetei Mayek"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Miao",
+      "version": "2.004",
+      "url": "https://github.com/notofonts/miao/releases/download/NotoSansMiao-v2.004/NotoSansMiao-v2.004.zip",
+      "size": 186895,
+      "sha256": "d6a8c4969aba37910989fe62f84260303dc9314c8a65f86f52d6ce9e62920a6b",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansMiao/hinted/ttf/NotoSansMiao-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Miao",
+          "langs": [],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "sample": "𖼀𖼇𖼎𖼕𖼜𖼣𖼪𖼱𖼸𖼿",
+          "chars": "\\p{Script=Plrd}",
+          "expect": [
+            "Noto Sans Miao"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Newa",
+      "version": "2.007",
+      "url": "https://github.com/notofonts/newa/releases/download/NotoSansNewa-v2.007/NotoSansNewa-v2.007.zip",
+      "size": 537626,
+      "sha256": "24b4301275f4188609da24a809742a5f0e3a159a3617ae1cc3642fefbfdec045",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansNewa/hinted/ttf/NotoSansNewa-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Newa",
+          "langs": [],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "sample": "𑐀𑐆𑐌𑐒𑐘𑐞𑐤𑐪𑐰𑑈",
+          "chars": "\\p{Script=Newa}",
+          "expect": [
+            "Noto Sans Newa"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Serif NP Hmong",
+      "version": "1.001",
+      "url": "https://github.com/notofonts/nyiakeng-puachue-hmong/releases/download/NotoSerifNPHmong-v1.001/NotoSerifNPHmong-v1.001.zip",
+      "size": 816950,
+      "sha256": "327bc7b8218640c4f50e55a6f9fd281a1eb5812bc658ba30623e6dfc840d32c0",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSerifNPHmong/hinted/ttf/NotoSerifNPHmong-Regular.ttf",
+        "NotoSerifNPHmong/hinted/ttf/NotoSerifNPHmong-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Serif NP Hmong",
+          "langs": [
+            "hnj"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "hnj",
+          "sample": "𞄀𞄄𞄈𞄌𞄐𞄔𞄘𞄜𞄠𞄤",
+          "chars": "\\p{Script=Hmnp}",
+          "expect": [
+            "Noto Serif NP Hmong"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Osage",
+      "version": "2.002",
+      "url": "https://github.com/notofonts/osage/releases/download/NotoSansOsage-v2.002/NotoSansOsage-v2.002.zip",
+      "size": 121324,
+      "sha256": "a3b14c1d6954c36cbcbb836b77c940b8aa0f2588396f58435fdcf733e806da67",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansOsage/hinted/ttf/NotoSansOsage-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Osage",
+          "langs": [
+            "osa"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "osa",
+          "sample": "𐒰𐒷𐒾𐓅𐓌𐓓𐓞𐓥𐓬𐓳",
+          "chars": "\\p{Script=Osge}",
+          "expect": [
+            "Noto Sans Osage"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Saurashtra",
+      "version": "2.002",
+      "url": "https://github.com/notofonts/saurashtra/releases/download/NotoSansSaurashtra-v2.002/NotoSansSaurashtra-v2.002.zip",
+      "size": 169663,
+      "sha256": "4326ffc142f9e517a9acff693c73194164cf04b8db0e17105c2422ef9c641cb4",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansSaurashtra/hinted/ttf/NotoSansSaurashtra-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Saurashtra",
+          "langs": [
+            "saz"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "saz",
+          "sample": "ꢂꢇꢌꢑꢖꢛꢠꢥꢪꢯ",
+          "chars": "\\p{Script=Saur}",
+          "expect": [
+            "Noto Sans Saurashtra"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Syloti Nagri",
+      "version": "2.004",
+      "url": "https://github.com/notofonts/syloti-nagri/releases/download/NotoSansSylotiNagri-v2.004/NotoSansSylotiNagri-v2.004.zip",
+      "size": 152598,
+      "sha256": "6e7848f0e71a4168cf803c1cf96cd61360276356cb5e9383b7064d5f32d04359",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansSylotiNagri/hinted/ttf/NotoSansSylotiNagri-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Syloti Nagri",
+          "langs": [
+            "syl"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "syl",
+          "sample": "ꠀꠄꠈꠌꠏꠒꠕꠘꠛꠞ",
+          "chars": "\\p{Script=Sylo}",
+          "expect": [
+            "Noto Sans Syloti Nagri"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Tai Le",
+      "version": "2.002",
+      "url": "https://github.com/notofonts/tai-le/releases/download/NotoSansTaiLe-v2.002/NotoSansTaiLe-v2.002.zip",
+      "size": 119707,
+      "sha256": "65ecf9f7a25c411477a7671bd329220331e16ae671baa518f28a8c1e7a5a39bf",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansTaiLe/hinted/ttf/NotoSansTaiLe-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Tai Le",
+          "langs": [
+            "tdd"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "tdd",
+          "sample": "ᥐᥓᥖᥙᥜᥟᥢᥥᥨᥫ",
+          "chars": "\\p{Script=Tale}",
+          "expect": [
+            "Noto Sans Tai Le"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Tai Tham",
+      "version": "2.002",
+      "url": "https://github.com/notofonts/tai-tham/releases/download/NotoSansTaiTham-v2.002/NotoSansTaiTham-v2.002.zip",
+      "size": 1927022,
+      "sha256": "12eb024bab33c9b8deeb823cf96107219719ed519f62cbe3f58295722113baea",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansTaiTham/hinted/ttf/NotoSansTaiTham-Regular.ttf",
+        "NotoSansTaiTham/hinted/ttf/NotoSansTaiTham-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Tai Tham",
+          "langs": [
+            "nod"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "nod",
+          "sample": "ᨠᨥᨪᨯᨴᨹᨾᩃᩈᩍ",
+          "chars": "\\p{Script=Lana}",
+          "expect": [
+            "Noto Sans Tai Tham"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Tai Viet",
+      "version": "2.004",
+      "url": "https://github.com/notofonts/tai-viet/releases/download/NotoSansTaiViet-v2.004/NotoSansTaiViet-v2.004.zip",
+      "size": 156938,
+      "sha256": "615ea5c07d0da2fcb439ed56488283dd4af9f5d048c6c7044421cf50c9876d4f",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansTaiViet/hinted/ttf/NotoSansTaiViet-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Tai Viet",
+          "langs": [
+            "blt"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "blt",
+          "sample": "ꪀꪆꪌꪒꪘꪞꪤꪪꪱꪼ",
+          "chars": "\\p{Script=Tavt}",
+          "expect": [
+            "Noto Sans Tai Viet"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans New Tai Lue",
+      "version": "2.004",
+      "url": "https://github.com/notofonts/new-tai-lue/releases/download/NotoSansNewTaiLue-v2.004/NotoSansNewTaiLue-v2.004.zip",
+      "size": 666814,
+      "sha256": "381a3bdea4adc9a45ab80b3b917c78ec7ca3ba6aaff4f6aad592c3d5c2515686",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansNewTaiLue/hinted/ttf/NotoSansNewTaiLue-Regular.ttf",
+        "NotoSansNewTaiLue/hinted/ttf/NotoSansNewTaiLue-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans New Tai Lue",
+          "langs": [
+            "khb"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "khb",
+          "sample": "ᦀᦇᦎᦕᦜᦣᦪᦵᦼᧃ",
+          "chars": "\\p{Script=Talu}",
+          "expect": [
+            "Noto Sans New Tai Lue"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Wancho",
+      "version": "2.001",
+      "url": "https://github.com/notofonts/wancho/releases/download/NotoSansWancho-v2.001/NotoSansWancho-v2.001.zip",
+      "size": 136279,
+      "sha256": "e8601f50e4476179bbe96987c22b4c95ecfb2fab2cc20ee7081b96a1fd673b5e",
+      "license": "../OFL.txt",
+      "files": [
+        "NotoSansWancho/hinted/ttf/NotoSansWancho-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Wancho",
+          "langs": [
+            "nnp"
+          ],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "lang": "nnp",
+          "sample": "𞋀𞋄𞋈𞋌𞋐𞋔𞋘𞋜𞋠𞋤",
+          "chars": "\\p{Script=Wcho}",
+          "expect": [
+            "Noto Sans Wancho"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Symbols",
+      "version": "2.003",
+      "url": "https://github.com/notofonts/symbols/releases/download/NotoSansSymbols-v2.003/NotoSansSymbols-v2.003.zip",
+      "size": 6607022,
+      "sha256": "0c113cdcf6c31d050b80dac39fba2d804a6985281012e76e9220c0a00da007f3",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansSymbols/hinted/ttf/NotoSansSymbols-Regular.ttf",
+        "NotoSansSymbols/hinted/ttf/NotoSansSymbols-Bold.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Symbols",
+          "langs": [],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "sample": "🜁 🜂 🜃 🜄 ⚕ ⚖",
+          "chars": "[\\u{1F700}-\\u{1F77F}]",
+          "expect": [
+            "Noto Sans Symbols"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Symbols 2",
+      "version": "2.008",
+      "url": "https://github.com/notofonts/symbols/releases/download/NotoSansSymbols2-v2.008/NotoSansSymbols2-v2.008.zip",
+      "size": 2331441,
+      "sha256": "346c930bbe8eb946701a05c54e9c11a2094dee1d93c387bf1771c0a3e335688f",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansSymbols2/hinted/ttf/NotoSansSymbols2-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Symbols 2",
+          "langs": [],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "sample": "⠓⠑⠇⠇⠕ ⠺⠕⠗⠇⠙",
+          "chars": "\\p{Script=Brai}",
+          "expect": [
+            "Noto Sans Symbols 2"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Sans Math",
+      "version": "3.000",
+      "url": "https://github.com/notofonts/math/releases/download/NotoSansMath-v3.000/NotoSansMath-v3.000.zip",
+      "size": 2498094,
+      "sha256": "ac351837b41f8a897f020b97fb0f075ad574c1e9669fb5839ada1f92fd748356",
+      "license": "OFL.txt",
+      "files": [
+        "NotoSansMath/hinted/ttf/NotoSansMath-Regular.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Sans Math",
+          "langs": [],
+          "generic": true
+        }
+      ],
+      "checks": [
+        {
+          "sample": "𝔄𝔅ℭ 𝕏𝕐ℤ 𝒜ℬ𝒞 ∮ ⨌",
+          "chars": "[\\u{1D400}-\\u{1D7FF}]",
+          "expect": [
+            "Noto Sans Math"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noto Color Emoji",
+      "version": "2.057",
+      "url": "https://raw.githubusercontent.com/googlefonts/noto-emoji/v2026-09-24-unicode18_0/2D/fonts/NotoColorEmoji.ttf",
+      "size": 10730124,
+      "sha256": "15671215ab769fdc7162a045d56fd7d7e477c51b04e6b3c761d914d8fdd6cc44",
+      "license": {
+        "url": "https://raw.githubusercontent.com/googlefonts/noto-emoji/v2026-09-24-unicode18_0/LICENSE",
+        "size": 4330,
+        "sha256": "500bb1ccf43df7bbb522112f9133a52b16e1c35e809632f5d8609b179152de5b"
+      },
+      "files": [
+        "NotoColorEmoji.ttf"
+      ],
+      "families": [
+        {
+          "name": "Noto Color Emoji",
+          "langs": [],
+          "generic": false
+        }
+      ],
+      "checks": [
+        {
+          "sample": "😀 🎉 👍🏽 🇯🇵 ❤️ 🧑‍💻 ☕ 🫠",
+          "chars": "\\p{Extended_Pictographic}",
+          "expect": [
+            "Noto Color Emoji"
+          ],
+          "color": true
+        }
+      ]
+    }
+  ]
+}

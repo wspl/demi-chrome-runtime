@@ -1,0 +1,177 @@
+name: Release
+
+# Builds the runtime for a Chrome for Testing version, checks it with that
+# Chrome on the oldest and newest distributions it supports, and, when asked,
+# publishes it as a release. A failed check blocks the release.
+on:
+  workflow_dispatch:
+    inputs:
+      chrome:
+        description: Chrome for Testing version to build and check against
+        required: true
+        default: 153.0.8010.36
+      release:
+        description: Release number (1, 2, …)
+        required: true
+      publish:
+        description: Publish the release when every check passes
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+env:
+  CHROME: ${{ inputs.chrome }}
+  RELEASE: ${{ inputs.release }}
+  # AlmaLinux 8: glibc 2.28, the oldest the runtime runs on.
+  BASE_IMAGE: almalinux:8.10@sha256:8b469a3a78515e8a18ea8fc727e6a3679e1d0c5ba6f58d5b30be3d0d9b86cffe
+
+jobs:
+  libs:
+    name: Libraries (${{ matrix.arch }})
+    strategy:
+      matrix:
+        include:
+          - arch: x86_64
+            runner: ubuntu-24.04
+          - arch: aarch64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Download Chrome
+        run: echo "CHROME_DIR=$(scripts/chrome.sh "$CHROME" ${{ matrix.arch }} "$RUNNER_TEMP/chrome")" >> "$GITHUB_ENV"
+      - name: Collect the libraries
+        run: |
+          mkdir out
+          docker run --rm -v "$CHROME_DIR:/chrome:ro" -v "$PWD/libs/collect.sh:/collect.sh:ro" -v "$PWD/out:/out" \
+            "$BASE_IMAGE" bash /collect.sh
+          sudo chown -R "$(id -u):$(id -g)" out
+      - name: Pack
+        run: |
+          scripts/pack.sh out out/libs-${{ matrix.arch }}.tar.zst lib
+          ls -l out/libs-${{ matrix.arch }}.tar.zst
+      - uses: actions/upload-artifact@v4
+        with:
+          name: libs-${{ matrix.arch }}
+          path: out/libs-${{ matrix.arch }}.tar.zst
+          compression-level: 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: libs-${{ matrix.arch }}-notices
+          path: |
+            out/MANIFEST
+            out/licenses
+            out/sources
+          compression-level: 0
+
+  fonts:
+    name: Fonts
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build the fonts
+        run: python3 fonts/build.py --out out --cache "$RUNNER_TEMP/fonts" --version "$RELEASE"
+      - name: Pack
+        run: |
+          scripts/pack.sh out out/fonts.tar.zst fonts fontconfig
+          ls -l out/fonts.tar.zst
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fonts
+          path: out/fonts.tar.zst
+          compression-level: 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fonts-notices
+          path: |
+            out/MANIFEST
+            out/licenses
+            out/sources
+          compression-level: 0
+
+  test:
+    name: Check (${{ matrix.arch }}, ${{ matrix.image }})
+    needs: [libs, fonts]
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [x86_64, aarch64]
+        image: [almalinux:8, debian:10, ubuntu:20.04, ubuntu:latest, fedora:latest]
+        include:
+          - arch: x86_64
+            runner: ubuntu-24.04
+            bun: bun-linux-x64-baseline
+          - arch: aarch64
+            runner: ubuntu-24.04-arm
+            bun: bun-linux-arm64
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v4
+        with:
+          name: libs-${{ matrix.arch }}
+          path: dist
+      - uses: actions/download-artifact@v4
+        with:
+          name: fonts
+          path: dist
+      - name: Unpack the runtime
+        run: |
+          mkdir runtime
+          for archive in dist/*.tar.zst; do
+            zstd -dc "$archive" | tar -x -C runtime
+          done
+      - name: Download Chrome
+        run: echo "CHROME_DIR=$(scripts/chrome.sh "$CHROME" ${{ matrix.arch }} "$RUNNER_TEMP/chrome")" >> "$GITHUB_ENV"
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+      - name: Build the probe
+        run: bun build --compile --target=${{ matrix.bun }} test/probe.ts --outfile "$RUNNER_TEMP/probe"
+      - name: Check
+        run: test/host.sh "${{ matrix.image }}" runtime "$CHROME_DIR" "$RUNNER_TEMP/probe" results
+      - name: Name the results
+        if: always()
+        run: echo "RESULTS=test-${{ matrix.arch }}-$(echo '${{ matrix.image }}' | tr ':.' '--')" >> "$GITHUB_ENV"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ env.RESULTS }}
+          path: results
+
+  release:
+    name: Publish
+    if: inputs.publish
+    needs: [libs, fonts, test]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Assemble the assets
+        run: |
+          for part in libs-x86_64 libs-aarch64 fonts; do
+            mkdir -p "parts/$part"
+            cp -R "artifacts/$part"/. "artifacts/$part-notices"/. "parts/$part/"
+          done
+          scripts/assemble.sh parts assets
+          ls -l assets
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$RELEASE" > /dev/null 2>&1; then
+            echo "release $RELEASE exists" >&2
+            exit 1
+          fi
+          {
+            echo "Built from AlmaLinux 8.10 and checked with Chrome for Testing $CHROME on AlmaLinux 8, Debian 10, Ubuntu 20.04, the latest Ubuntu and the latest Fedora, x86_64 and aarch64."
+            echo
+            echo "Checks: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          } > notes.md
+          gh release create "$RELEASE" --target "$GITHUB_SHA" --title "$RELEASE" --notes-file notes.md assets/*
